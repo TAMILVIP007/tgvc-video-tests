@@ -29,8 +29,10 @@ async def stream_msg_handler(_, m: Message):
     player.meta["is_live"] = True
     try:
         stream_url = m.text.split(' ', 1)[1]
-        link = re.search(r'((https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|embed\/|v\/|.+\?v=)?([^&=%\?]{11}))', stream_url)
-        if link:
+        if link := re.search(
+            r'((https?:\/\/)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)\/(watch\?v=|embed\/|v\/|.+\?v=)?([^&=%\?]{11}))',
+            stream_url,
+        ):
             link = link.group(1)
             if (await is_ytlive(stream_url)):
                 stream_url = await convert_to_stream(link)

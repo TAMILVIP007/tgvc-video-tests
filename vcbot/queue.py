@@ -2,7 +2,7 @@
 
 class Queue:
     def __init__(self):
-        self.queue = dict()
+        self.queue = {}
     def add(self, chat: int, data: dict):
         queue = self.queue.get(chat, None)
         if not queue:

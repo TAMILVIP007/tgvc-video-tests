@@ -24,7 +24,7 @@ ms = {}
 
 @group_calls.on_stream_end()
 async def on_stream_end(client: PyTgCalls, update: Update):
-    LOG.info(f"called ended stream")
+    LOG.info('called ended stream')
     cms = time.time()
     if k:= ms.get(update.chat_id):
         if cms-k < 10:
@@ -48,7 +48,7 @@ async def on_stream_end(client: PyTgCalls, update: Update):
         await player.leave_vc()
 
 
-meta = dict()
+meta = {}
 class Player:
     def __init__(self, chat_id):
         self._current_chat = chat_id

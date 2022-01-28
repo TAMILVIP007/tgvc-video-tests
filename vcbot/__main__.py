@@ -9,7 +9,7 @@ from vcbot.config import Var
 from vcbot.plugins import play
 loop = asyncio.get_event_loop()
 
-_path = f"vcbot/plugins/*.py"
+_path = 'vcbot/plugins/*.py'
 files = glob.glob(_path)
 
 def load_plugins(plugin_name):
@@ -18,7 +18,7 @@ def load_plugins(plugin_name):
     spec = importlib.util.spec_from_file_location(name, path)
     load = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(load)
-    sys.modules[f"vcbot.plugins." + plugin_name] = load
+    sys.modules['vcbot.plugins.' + plugin_name] = load
     print("Imported => " + plugin_name)
 
 async def client_start(bot=False):

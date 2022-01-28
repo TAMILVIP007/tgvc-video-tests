@@ -11,9 +11,13 @@ p = print
 
 async def aexec(code, c, m):
     exec(
-        f'async def __aexec(c, m):' + '\n rm = m.reply_to_message' +
-        ''.join(f'\n {l}' for l in code.split('\n'))
+        (
+            'async def __aexec(c, m):'
+            + '\n rm = m.reply_to_message'
+            + ''.join(f'\n {l}' for l in code.split('\n'))
+        )
     )
+
     return await locals()['__aexec'](c, m)
 
 
